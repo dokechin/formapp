@@ -1,0 +1,30 @@
+% layout 'bootstrap';
+% title 'Welcome';
+
+<%= form_for '/newentry' => (method => "post") => (class => "form-horizontal") => begin %>
+<fieldset xmlns="http://www.w3.org/1999/xhtml">
+<h2>Form Name</h2>
+<div class ="control-group <% if ($self->stash->{errors} && $self->stash->{errors}->{"textinput"}) {%><%= "error" %><% } %>"><label class="control-label">Text Input</label>
+<div class="controls"><%= text_field 'textinput' => (class => "input-xlarge") => (placeholder => "placeholder") %> 
+<p class="help-block">help</p>
+</div>
+</div>
+<div class ="control-group <% if ($self->stash->{errors} && $self->stash->{errors}->{"singlebutton"}) {%><%= "error" %><% } %>"><label class="control-label">Single Button</label>
+<div class="controls"><button id="singlebutton" class="btn btn-primary" name="singlebutton" type="submit">Button</button></div>
+</div>
+</fieldset>
+<% end %>
+% if ($self->stash->{error_messages}) {
+<ul>
+% for my $message ( @{$self->stash->{error_messages}} ) {
+<li><%= $message %></li>
+% }
+</ul>
+% }
+
+
+
+
+
+
+
